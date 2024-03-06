@@ -240,25 +240,7 @@ def transformer_iwslt_de_en(args):
 def transformer_wmt_en_de(args):
     base_architecture(args)
 
-@register_model_architecture("transformer", "transformer_baseline_optimized")
-def transformer_iwslt_hi_en(args):
-    args.encoder_embed_dim = getattr(args, "encoder_embed_dim", 512)
-    args.encoder_ffn_embed_dim = getattr(args, "encoder_ffn_embed_dim", 1024)
-    args.encoder_attention_heads = getattr(args, "encoder_attention_heads", 4)
-    args.encoder_layers = getattr(args, "encoder_layers", 5)
-    args.decoder_embed_dim = getattr(args, "decoder_embed_dim", 512)
-    args.decoder_ffn_embed_dim = getattr(args, "decoder_ffn_embed_dim", 1024)
-    args.decoder_attention_heads = getattr(args, "decoder_attention_heads", 4)
-    args.decoder_layers = getattr(args, "decoder_layers", 5)
-    args.share_decoder_input_output_embed = getattr(
-        args, "share_decoder_input_output_embed", True
-    )
-    args.activation_dropout = getattr(args, "activation_dropout", 0.3)
-    args.dropout = getattr(args, "dropout", 0.3)
-    args.encoder_layerdrop = getattr(args, "encoder_layerdrop", 0)
-    args.decoder_layerdrop = getattr(args, "decoder_layerdrop", 0.2)
-    base_architecture(args)
-    
+
 # parameters used in the "Attention Is All You Need" paper (Vaswani et al., 2017)
 @register_model_architecture("transformer", "transformer_vaswani_wmt_en_de_big")
 def transformer_vaswani_wmt_en_de_big(args):
