@@ -1,5 +1,5 @@
 #!/bin/bash
-#create files containing ground truth and predictions of the last checkpoint (for each data split)
+#create files containing ground truth and predictions of the best checkpoint (for each data split)
 
 if [ $# -ne 14 ]; then
     echo "Mismatch in # of arguments provided"
@@ -24,30 +24,30 @@ lang=$source_lang-$target_lang
 
 if [[ "$is_train" == 1 ]]; then
     echo "Extracting training text"
-    grep "H-" output_custom_fldr/$model_folder_name/$model_desc/output_train_lastCP_$lang.txt | cut -f 3 > output_custom_fldr/$model_folder_name/$model_desc/output_train_lastCP_pred.txt
-    grep "T-" output_custom_fldr/$model_folder_name/$model_desc/output_train_lastCP_$lang.txt | cut -f 2 > output_custom_fldr/$model_folder_name/$model_desc/output_train_lastCP_truth.txt
-    echo "no of lines in output_train_lastCP_pred is"
-    wc -l output_custom_fldr/$model_folder_name/$model_desc/output_train_lastCP_pred.txt
-    echo "no of lines in output_train_lastCP_truth is"
-    wc -l output_custom_fldr/$model_folder_name/$model_desc/output_train_lastCP_truth.txt
+    grep "H-" output_custom_fldr/$model_folder_name/$model_desc/output_train_$lang.txt | cut -f 3 > output_custom_fldr/$model_folder_name/$model_desc/output_train_pred.txt
+    grep "T-" output_custom_fldr/$model_folder_name/$model_desc/output_train_$lang.txt | cut -f 2 > output_custom_fldr/$model_folder_name/$model_desc/output_train_truth.txt
+    echo "no of lines in output_train_pred is"
+    wc -l output_custom_fldr/$model_folder_name/$model_desc/output_train_pred.txt
+    echo "no of lines in output_train_truth is"
+    wc -l output_custom_fldr/$model_folder_name/$model_desc/output_train_truth.txt
 fi
 
 if [[ "$is_valid" == 1 ]]; then
     echo "Extracting validation text"
-    grep "H-" output_custom_fldr/$model_folder_name/$model_desc/output_valid_lastCP_$lang.txt | cut -f 3 > output_custom_fldr/$model_folder_name/$model_desc/output_valid_lastCP_pred.txt
-    grep "T-" output_custom_fldr/$model_folder_name/$model_desc/output_valid_lastCP_$lang.txt | cut -f 2 > output_custom_fldr/$model_folder_name/$model_desc/output_valid_lastCP_truth.txt
-    echo "no of lines in output_valid_lastCP_pred is"
-    wc -l output_custom_fldr/$model_folder_name/$model_desc/output_valid_lastCP_pred.txt
-    echo "no of lines in output_valid_lastCP_truth is"
-    wc -l output_custom_fldr/$model_folder_name/$model_desc/output_valid_lastCP_truth.txt
+    grep "H-" output_custom_fldr/$model_folder_name/$model_desc/output_valid_$lang.txt | cut -f 3 > output_custom_fldr/$model_folder_name/$model_desc/output_valid_pred.txt
+    grep "T-" output_custom_fldr/$model_folder_name/$model_desc/output_valid_$lang.txt | cut -f 2 > output_custom_fldr/$model_folder_name/$model_desc/output_valid_truth.txt
+    echo "no of lines in output_valid_pred is"
+    wc -l output_custom_fldr/$model_folder_name/$model_desc/output_valid_pred.txt
+    echo "no of lines in output_valid_truth is"
+    wc -l output_custom_fldr/$model_folder_name/$model_desc/output_valid_truth.txt
 fi
 
 if [[ "$is_test" == 1 ]]; then
     echo "Extracting test text"
-    grep "H-" output_custom_fldr/$model_folder_name/$model_desc/output_test_lastCP_$lang.txt | cut -f 3 > output_custom_fldr/$model_folder_name/$model_desc/output_test_lastCP_pred.txt
-    grep "T-" output_custom_fldr/$model_folder_name/$model_desc/output_test_lastCP_$lang.txt | cut -f 2 > output_custom_fldr/$model_folder_name/$model_desc/output_test_lastCP_truth.txt
-    echo "no of lines in output_test_lastCP_pred is"
-    wc -l output_custom_fldr/$model_folder_name/$model_desc/output_test_lastCP_pred.txt
-    echo "no of lines in output_test_lastCP_truth is"
-    wc -l output_custom_fldr/$model_folder_name/$model_desc/output_test_lastCP_truth.txt
+    grep "H-" output_custom_fldr/$model_folder_name/$model_desc/output_test_$lang.txt | cut -f 3 > output_custom_fldr/$model_folder_name/$model_desc/output_test_pred.txt
+    grep "T-" output_custom_fldr/$model_folder_name/$model_desc/output_test_$lang.txt | cut -f 2 > output_custom_fldr/$model_folder_name/$model_desc/output_test_truth.txt
+    echo "no of lines in output_test_pred is"
+    wc -l output_custom_fldr/$model_folder_name/$model_desc/output_test_pred.txt
+    echo "no of lines in output_test_truth is"
+    wc -l output_custom_fldr/$model_folder_name/$model_desc/output_test_truth.txt
 fi
