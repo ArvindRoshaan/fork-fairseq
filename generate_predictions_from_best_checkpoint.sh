@@ -33,7 +33,7 @@ if [ $is_test -ne 1 ]; then
 fi
 
 
-if [ $is_train -ne 1 ]; then
+if [[ "$is_train" -eq 1 ]]; then
     echo "Preparing files to generate output for training data"
     #Rename training files as test files
     cp ./data-bin/$model_folder_name/train.$lang.$src.bin ./data-bin/$model_folder_name/test.$lang.$src.bin
